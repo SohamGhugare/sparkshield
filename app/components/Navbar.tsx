@@ -2,7 +2,6 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
-import { WalletButton } from './WalletButton';
 import { Shield } from 'lucide-react';
 
 export const Navbar = () => {
