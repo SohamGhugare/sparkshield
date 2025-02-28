@@ -79,6 +79,32 @@ project/
    }
    ```
 
+   **Spark Wallet Integration**
+   ```typescript
+   // Initialize a Spark wallet
+   const sparkWallet = await SparkWallet.init({
+     network: process.env.SPARK_NETWORK,
+     mnemonic: storedMnemonic
+   });
+
+   // Get wallet balance
+   const balance = await sparkWallet.getBalance();
+   
+   // Send payment
+   const paymentResult = await sparkWallet.sendPayment({
+     destination: recipientPubkey,
+     amount: amountInSats,
+     memo: "Insurance premium payment"
+   });
+
+   // Listen for incoming payments
+   sparkWallet.on('payment', async (payment) => {
+     if (payment.type === 'claim_payout') {
+       await processPayout(payment);
+     }
+   });
+   ```
+
 2. **Insurance Claims**
    ```typescript
    interface Claim {
