@@ -2,18 +2,27 @@
 
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { useWallet } from '../components/WalletContext';
-import { CapitalPortal } from '../components/capital/CapitalPortal';
+import { useWallet } from '@/app/components/WalletContext';
+import { CapitalPortal } from '@/app/components/capital/CapitalPortal';
+import Loader from '@/app/components/loader';
 
-export default function CapitalProviderPage() {
+export default function CapitalProvider() {
+  const { isConnected, loading } = useWallet();
   const router = useRouter();
-  const { isConnected } = useWallet();
 
   useEffect(() => {
-    if (!isConnected) {
-      router.push('/connect');
+    if (!loading && !isConnected) {
+      router.push('/');
     }
-  }, [isConnected, router]);
+  }, [isConnected, loading, router]);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <Loader />
+      </div>
+    );
+  }
 
   if (!isConnected) {
     return null;
