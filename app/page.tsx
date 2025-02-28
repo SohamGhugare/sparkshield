@@ -44,8 +44,8 @@ export default function Home() {
         {/* Features Section */}
         <div className="mt-24 grid md:grid-cols-3 gap-8">
           <FeatureCard
-            title="Secure Coverage"
-            description="Protected by Bitcoin&apos;s security and smart contracts"
+            title="Capital Providers"
+            description="Provide liquidity in BTC or stablecoins to earn yields on insurance premiums"
             icon={
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
                 <rect width="18" height="20" x="3" y="2" rx="2" strokeWidth="2"/>
@@ -54,8 +54,8 @@ export default function Home() {
             }
           />
           <FeatureCard
-            title="Competitive Yields"
-            description="Earn attractive returns on your staked capital"
+            title="Spark Network"
+            description="Ultra-efficient Bitcoint Layer 2 enabling instant, near-zero fee transactions"
             icon={
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
                 <path strokeWidth="2" d="M4 20L8 16L12 20L20 12M20 12V16M20 12H16"/>
@@ -63,8 +63,8 @@ export default function Home() {
             }
           />
           <FeatureCard
-            title="Instant Claims"
-            description="Automated verification and quick settlements"
+            title="Insurance Buyers"
+            description="Purchase parametric coverage with instant activation and automatic payouts"
             icon={
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
                 <path strokeWidth="2" d="M4 6h16M4 10h16M4 14h8"/>
