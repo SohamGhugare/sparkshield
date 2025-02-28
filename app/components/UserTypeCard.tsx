@@ -1,39 +1,51 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
+import { useState } from 'react';
 import { useWallet } from './WalletContext';
+import { WalletSelectModal } from './WalletSelectModal';
 
-interface UserTypeCardProps {
+type Props = {
   title: string;
   description: string;
   buttonText: string;
   redirectPath: string;
-}
+};
 
-export const UserTypeCard = ({ title, description, buttonText, redirectPath }: UserTypeCardProps) => {
-  const router = useRouter();
-  const { isConnected } = useWallet();
+export function UserTypeCard({ title, description, buttonText, redirectPath }: Props) {
+  const { isConnected, selectWallet } = useWallet();
+  const [showWalletSelect, setShowWalletSelect] = useState(false);
 
-  const handleClick = () => {
+  const handleClick = async () => {
     if (!isConnected) {
-      router.push('/connect');
+      setShowWalletSelect(true);
     } else {
-      router.push(redirectPath);
+      window.location.href = redirectPath;
     }
   };
 
   return (
-    <div 
-      className="h-full flex flex-col bg-white p-10 rounded-2xl border border-gray-200 hover:border-bitcoin cursor-pointer shadow-lg hover:shadow-xl transition-all text-center group"
-      onClick={handleClick}
-    >
-      <h2 className="text-3xl font-bold text-gray-900 mb-6 group-hover:text-bitcoin transition-colors">{title}</h2>
-      <p className="text-gray-600 text-lg mb-8 flex-grow">{description}</p>
-      <div className="flex justify-center">
-        <button className="bg-orange-50 text-bitcoin hover:bg-orange-100 px-8 py-4 rounded-xl font-bold transition-all transform group-hover:scale-105 text-lg w-full sm:w-auto">
-          {buttonText}
+    <>
+      <div className="bg-white p-8 rounded-xl border border-gray-200 hover:border-orange-200 transition-colors">
+        <h2 className="text-2xl font-bold text-gray-900 mb-4">{title}</h2>
+        <p className="text-gray-600 mb-8">{description}</p>
+        <button
+          onClick={handleClick}
+          className="w-full bg-bitcoin text-white py-3 px-4 rounded-xl hover:bg-orange-600 transition-colors font-bold"
+        >
+          {!isConnected ? "Choose Wallet" : buttonText}
         </button>
       </div>
-    </div>
+
+      {showWalletSelect && (
+        <WalletSelectModal 
+          onClose={() => setShowWalletSelect(false)}
+          onSelect={async (walletId) => {
+            await selectWallet(walletId);
+            setShowWalletSelect(false);
+            window.location.href = redirectPath;
+          }}
+        />
+      )}
+    </>
   );
-}; 
+} 

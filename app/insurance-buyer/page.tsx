@@ -2,18 +2,27 @@
 
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { useWallet } from '../components/WalletContext';
-import { Marketplace } from '../components/Marketplace';
+import { useWallet } from '@/app/components/WalletContext';
+import { Marketplace } from '@/app/components/Marketplace';
+import Loader from '@/app/components/loader';
 
-export default function InsuranceBuyerPage() {
+export default function InsuranceBuyer() {
+  const { isConnected, loading } = useWallet();
   const router = useRouter();
-  const { isConnected } = useWallet();
 
   useEffect(() => {
-    if (!isConnected) {
-      router.push('/connect');
+    if (!loading && !isConnected) {
+      router.push('/');
     }
-  }, [isConnected, router]);
+  }, [isConnected, loading, router]);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <Loader />
+      </div>
+    );
+  }
 
   if (!isConnected) {
     return null;
