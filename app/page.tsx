@@ -16,12 +16,12 @@ export default function Home() {
             </span>
             <div className="flex flex-col md:flex-row items-center justify-center gap-4 text-3xl md:text-4xl lg:text-5xl font-bold text-gray-700">
               <span>Powered by</span>
-              <div className="flex items-center gap-3">
-                <span className="text-bitcoin inline-block hover:scale-105 transition-transform bg-orange-50 px-4 py-2 rounded-lg">
+              <div className="flex flex-wrap items-center justify-center gap-3">
+                <span className="text-orange-600 inline-block hover:scale-105 transition-transform bg-orange-50 px-4 py-2 rounded-lg shadow-sm">
                   Spark
                 </span>
                 <span className="text-gray-700">&</span>
-                <span className="text-blue-600 inline-block hover:scale-105 transition-transform bg-blue-50 px-4 py-2 rounded-lg">
+                <span className="text-blue-600 inline-block hover:scale-105 transition-transform bg-blue-50 px-4 py-2 rounded-lg shadow-sm">
                   NEAR Intents
                 </span>
               </div>
@@ -118,31 +118,31 @@ export default function Home() {
         </div>
         
         {/* NEAR Intents Highlight Section */}
-        <div className="mt-24 bg-blue-50 rounded-xl p-8 shadow-md">
+        <div className="mt-24 bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-8 shadow-md border border-blue-200">
           <h2 className="text-3xl font-bold text-center mb-8 text-blue-800">Why We Use NEAR Intents</h2>
           <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-white p-6 rounded-lg shadow">
+            <div className="bg-white p-6 rounded-lg shadow-sm border border-blue-100 hover:shadow-md transition-shadow">
               <h3 className="text-xl font-semibold mb-3 text-blue-700">Cross-Chain Capabilities</h3>
               <p className="text-gray-700">
                 NEAR Intents enables seamless asset transfers between Bitcoin, NEAR, and other chains, 
                 providing a unified interface for multi-chain insurance products and expanding our market reach.
               </p>
             </div>
-            <div className="bg-white p-6 rounded-lg shadow">
+            <div className="bg-white p-6 rounded-lg shadow-sm border border-blue-100 hover:shadow-md transition-shadow">
               <h3 className="text-xl font-semibold mb-3 text-blue-700">AI-Powered Claim Resolution</h3>
               <p className="text-gray-700">
                 Leverage intelligent claim verification using AI agents, enabling automated intent resolution 
                 for faster payouts and enhanced fraud detection through sophisticated analysis.
               </p>
             </div>
-            <div className="bg-white p-6 rounded-lg shadow">
+            <div className="bg-white p-6 rounded-lg shadow-sm border border-blue-100 hover:shadow-md transition-shadow">
               <h3 className="text-xl font-semibold mb-3 text-blue-700">Enhanced User Experience</h3>
               <p className="text-gray-700">
                 Enjoy cross-chain settlement in seconds regardless of native asset chain, with simplified 
                 user flows through intent-based interactions and reduced complexity.
               </p>
             </div>
-            <div className="bg-white p-6 rounded-lg shadow">
+            <div className="bg-white p-6 rounded-lg shadow-sm border border-blue-100 hover:shadow-md transition-shadow">
               <h3 className="text-xl font-semibold mb-3 text-blue-700">Expanded Market Access</h3>
               <p className="text-gray-700">
                 Access combined liquidity from DEXs across chains and CEXs, with broader capital pools 
