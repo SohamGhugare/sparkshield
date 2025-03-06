@@ -2,6 +2,7 @@
 
 import { FeatureCard } from './components/FeatureCard';
 import { UserTypeCard } from './components/UserTypeCard';
+import Link from 'next/link';
 
 export default function Home() {
   return (
@@ -13,29 +14,42 @@ export default function Home() {
             <span className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-gray-900 tracking-tight">
               Decentralized Insurance
             </span>
-            <div className="flex items-center justify-center gap-4 text-3xl md:text-4xl lg:text-5xl font-bold text-gray-700">
-              Powered by{" "}
-              <span className="text-bitcoin inline-block hover:scale-105 transition-transform bg-orange-50 px-4 py-2 rounded-lg">
-                Spark
-              </span>
+            <div className="flex flex-col md:flex-row items-center justify-center gap-4 text-3xl md:text-4xl lg:text-5xl font-bold text-gray-700">
+              <span>Powered by</span>
+              <div className="flex items-center gap-3">
+                <span className="text-bitcoin inline-block hover:scale-105 transition-transform bg-orange-50 px-4 py-2 rounded-lg">
+                  Spark
+                </span>
+                <span className="text-gray-700">&</span>
+                <span className="text-blue-600 inline-block hover:scale-105 transition-transform bg-blue-50 px-4 py-2 rounded-lg">
+                  NEAR Intents
+                </span>
+              </div>
             </div>
           </h1>
-          <p className="text-lg md:text-xl text-gray-600 mb-16 max-w-3xl mx-auto leading-relaxed font-medium">
+          <p className="text-lg md:text-xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed font-medium">
             SparkShield is a Bitcoin-native parametric insurance protocol built directly on Spark. It leverages Spark&apos;s instant transaction capabilities and low fees to provide innovative insurance solutions for Bitcoin holders and businesses while maintaining self-custody principles.
           </p>
+          <p className="text-lg md:text-xl text-gray-600 mb-16 max-w-3xl mx-auto leading-relaxed font-medium">
+            With NEAR Intents integration, SparkShield enables cross-chain insurance products, AI-powered claim resolution, and unified liquidity across multiple blockchains.
+          </p>
+          
+          <Link href="/intents" className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition-colors shadow-md">
+            Explore NEAR Intents Dashboard
+          </Link>
         </div>
 
         {/* User Type Selection */}
         <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mt-16">
           <UserTypeCard
             title="Insurance Buyer"
-            description="Protect your assets with customizable coverage options and instant quotes."
+            description="Protect your assets with customizable coverage options and instant quotes. Cross-chain coverage powered by NEAR Intents."
             buttonText="Get Coverage"
             redirectPath="/insurance-buyer"
           />
           <UserTypeCard
             title="Capital Provider"
-            description="Earn yields by providing liquidity to insurance pools with flexible staking options."
+            description="Earn yields by providing liquidity to insurance pools with flexible staking options. Access unified liquidity across multiple chains."
             buttonText="Provide Capital"
             redirectPath="/capital-provider"
           />
@@ -55,7 +69,7 @@ export default function Home() {
           />
           <FeatureCard
             title="Spark Network"
-            description="Ultra-efficient Bitcoint Layer 2 enabling instant, near-zero fee transactions"
+            description="Ultra-efficient Bitcoin Layer 2 enabling instant, near-zero fee transactions"
             icon={
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
                 <path strokeWidth="2" d="M4 20L8 16L12 20L20 12M20 12V16M20 12H16"/>
@@ -72,6 +86,75 @@ export default function Home() {
               </svg>
             }
           />
+          <FeatureCard
+            title="Cross-Chain Coverage"
+            description="Seamlessly protect assets across Bitcoin, NEAR, and other blockchains with unified policies"
+            icon={
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path strokeWidth="2" d="M8 12h8M12 16V8M3 12h2M19 12h2"/>
+                <circle cx="12" cy="12" r="9" strokeWidth="2"/>
+              </svg>
+            }
+          />
+          <FeatureCard
+            title="AI-Powered Claims"
+            description="Intelligent claim verification and automated payouts using NEAR Intents and AI agents"
+            icon={
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path strokeWidth="2" d="M12 8v4l3 3M12 2a10 10 0 100 20 10 10 0 000-20z"/>
+                <path strokeWidth="2" d="M17 17l3 3M21 12h-2M12 21v-2M3 12h2M12 3v2"/>
+              </svg>
+            }
+          />
+          <FeatureCard
+            title="Unified Liquidity"
+            description="Access combined liquidity pools across multiple chains for better capital efficiency"
+            icon={
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path strokeWidth="2" d="M12 3v18M3 12h18M5.636 5.636l12.728 12.728M18.364 5.636L5.636 18.364"/>
+              </svg>
+            }
+          />
+        </div>
+        
+        {/* NEAR Intents Highlight Section */}
+        <div className="mt-24 bg-blue-50 rounded-xl p-8 shadow-md">
+          <h2 className="text-3xl font-bold text-center mb-8 text-blue-800">Why We Use NEAR Intents</h2>
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className="bg-white p-6 rounded-lg shadow">
+              <h3 className="text-xl font-semibold mb-3 text-blue-700">Cross-Chain Capabilities</h3>
+              <p className="text-gray-700">
+                NEAR Intents enables seamless asset transfers between Bitcoin, NEAR, and other chains, 
+                providing a unified interface for multi-chain insurance products and expanding our market reach.
+              </p>
+            </div>
+            <div className="bg-white p-6 rounded-lg shadow">
+              <h3 className="text-xl font-semibold mb-3 text-blue-700">AI-Powered Claim Resolution</h3>
+              <p className="text-gray-700">
+                Leverage intelligent claim verification using AI agents, enabling automated intent resolution 
+                for faster payouts and enhanced fraud detection through sophisticated analysis.
+              </p>
+            </div>
+            <div className="bg-white p-6 rounded-lg shadow">
+              <h3 className="text-xl font-semibold mb-3 text-blue-700">Enhanced User Experience</h3>
+              <p className="text-gray-700">
+                Enjoy cross-chain settlement in seconds regardless of native asset chain, with simplified 
+                user flows through intent-based interactions and reduced complexity.
+              </p>
+            </div>
+            <div className="bg-white p-6 rounded-lg shadow">
+              <h3 className="text-xl font-semibold mb-3 text-blue-700">Expanded Market Access</h3>
+              <p className="text-gray-700">
+                Access combined liquidity from DEXs across chains and CEXs, with broader capital pools 
+                for insurance backing and increased participation from diverse ecosystems.
+              </p>
+            </div>
+          </div>
+          <div className="text-center mt-8">
+            <Link href="/intents" className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition-colors shadow-md">
+              Try NEAR Intents Now
+            </Link>
+          </div>
         </div>
       </div>
     </div>
