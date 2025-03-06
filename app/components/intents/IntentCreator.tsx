@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useIntents } from './IntentProvider';
+import { useIntents, IntentParameters } from './IntentProvider';
 
 interface IntentCreatorProps {
   type: 'coverage' | 'claim' | 'staking';
@@ -17,7 +17,7 @@ const IntentCreator: React.FC<IntentCreatorProps> = ({
   const [formData, setFormData] = useState({
     sourceChain: 'near',
     targetChain: 'bitcoin',
-    parameters: {}
+    parameters: {} as IntentParameters
   });
 
   // Different parameter fields based on intent type
@@ -119,7 +119,7 @@ const IntentCreator: React.FC<IntentCreatorProps> = ({
     }
   };
 
-  const updateParameter = (key: string, value: any) => {
+  const updateParameter = (key: string, value: string | number) => {
     setFormData(prev => ({
       ...prev,
       parameters: {

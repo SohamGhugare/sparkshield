@@ -1,10 +1,22 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 
 // Define types for our intent system
+export interface IntentParameters {
+  coverageAmount?: number;
+  duration?: number;
+  premium?: number;
+  policyId?: string;
+  amount?: number;
+  evidence?: string;
+  lockPeriod?: number;
+  poolId?: string;
+  [key: string]: string | number | boolean | undefined;
+}
+
 export interface Intent {
   id: string;
   type: 'coverage' | 'claim' | 'staking';
-  parameters: Record<string, any>;
+  parameters: IntentParameters;
   sourceChain: string;
   targetChain: string;
   status: 'pending' | 'resolved' | 'failed';
@@ -12,10 +24,17 @@ export interface Intent {
   createdAt: number;
 }
 
+export interface IntentResolution {
+  status: string;
+  reason: string;
+  payout?: number;
+  [key: string]: string | number | boolean | undefined;
+}
+
 interface IntentContextType {
   intents: Intent[];
   createIntent: (intentData: Omit<Intent, 'id' | 'status' | 'createdAt'>) => Promise<Intent>;
-  resolveIntent: (intentId: string, resolution: any) => Promise<boolean>;
+  resolveIntent: (intentId: string, resolution: IntentResolution) => Promise<boolean>;
   getIntentById: (intentId: string) => Intent | undefined;
   pendingIntents: Intent[];
   loading: boolean;
@@ -41,7 +60,7 @@ const IntentContext = createContext<IntentContextType>({
 
 // Mock NEAR Intents API for now
 const mockNearIntentsApi = {
-  create: async (intentData: any): Promise<Intent> => {
+  create: async (intentData: Omit<Intent, 'id' | 'status' | 'createdAt'>): Promise<Intent> => {
     // Simulate API call
     await new Promise(resolve => setTimeout(resolve, 500));
     
@@ -53,9 +72,13 @@ const mockNearIntentsApi = {
     };
   },
   
-  resolve: async (intentId: string, resolution: any): Promise<boolean> => {
+  resolve: async (intentId: string, resolution: IntentResolution): Promise<boolean> => {
     // Simulate API call
     await new Promise(resolve => setTimeout(resolve, 500));
+    
+    // We're not using the parameters in this mock implementation,
+    // but we're keeping them to match a real API signature
+    console.log(`Resolving intent ${intentId} with resolution:`, resolution);
     
     return true;
   },
@@ -104,7 +127,7 @@ export const IntentProvider: React.FC<IntentProviderProps> = ({ children }) => {
     }
   };
 
-  const resolveIntent = async (intentId: string, resolution: any): Promise<boolean> => {
+  const resolveIntent = async (intentId: string, resolution: IntentResolution): Promise<boolean> => {
     try {
       const success = await mockNearIntentsApi.resolve(intentId, resolution);
       
@@ -112,7 +135,12 @@ export const IntentProvider: React.FC<IntentProviderProps> = ({ children }) => {
         setIntents(prev => 
           prev.map(intent => 
             intent.id === intentId 
-              ? { ...intent, status: 'resolved', ...resolution } 
+              ? { 
+                  ...intent, 
+                  status: 'resolved' as const,
+                  reason: resolution.reason,
+                  payout: resolution.payout
+                } 
               : intent
           )
         );

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useIntents, Intent } from './IntentProvider';
+import { useIntents, Intent, IntentResolution } from './IntentProvider';
 
 interface IntentDetailsProps {
   intent: Intent;
@@ -9,7 +9,7 @@ interface IntentDetailsProps {
 const IntentDetails: React.FC<IntentDetailsProps> = ({ intent, onClose }) => {
   const { resolveIntent } = useIntents();
   const [loading, setLoading] = useState(false);
-  const [resolution, setResolution] = useState({
+  const [resolution, setResolution] = useState<IntentResolution>({
     status: 'approved',
     reason: '',
     payout: 0
@@ -30,7 +30,7 @@ const IntentDetails: React.FC<IntentDetailsProps> = ({ intent, onClose }) => {
     return new Date(timestamp).toLocaleString();
   };
 
-  const renderParameterValue = (value: any) => {
+  const renderParameterValue = (value: string | number | boolean | undefined) => {
     if (typeof value === 'object' && value !== null) {
       return (
         <pre className="bg-gray-50 p-2 rounded text-xs overflow-auto font-mono border border-gray-200">
@@ -79,13 +79,12 @@ const IntentDetails: React.FC<IntentDetailsProps> = ({ intent, onClose }) => {
           <p className="text-sm text-gray-500">Status</p>
           <p className={`font-medium capitalize ${
             intent.status === 'resolved' ? 'text-green-600' : 
-            intent.status === 'failed' ? 'text-red-600' : 'text-yellow-600'
-          }`}>
-            {intent.status}
-          </p>
+            intent.status === 'failed' ? 'text-red-600' : 
+            'text-yellow-600'
+          }`}>{intent.status}</p>
         </div>
         <div>
-          <p className="text-sm text-gray-500">Created At</p>
+          <p className="text-sm text-gray-500">Created</p>
           <p className="font-medium text-gray-800">{formatDate(intent.createdAt)}</p>
         </div>
         {intent.solver && (

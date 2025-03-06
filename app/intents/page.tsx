@@ -26,7 +26,7 @@ const IntentsPage = () => {
     setShowCreateModal(true);
   };
 
-  const handleIntentCreated = (intentId: string) => {
+  const handleIntentCreated = () => {
     setShowCreateModal(false);
     // Could add a success notification here
   };
