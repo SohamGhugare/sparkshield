@@ -21,8 +21,8 @@ export default function Home() {
                   Spark
                 </span>
                 <span className="text-gray-700">&</span>
-                <span className="text-blue-600 inline-block hover:scale-105 transition-transform bg-blue-50 px-4 py-2 rounded-lg shadow-sm">
-                  NEAR Intents
+                <span className="text-purple-600 inline-block hover:scale-105 transition-transform bg-purple-50 px-4 py-2 rounded-lg shadow-sm">
+                  Runes DEX
                 </span>
               </div>
             </div>
@@ -31,12 +31,17 @@ export default function Home() {
             SparkShield is a Bitcoin-native parametric insurance protocol built directly on Spark. It leverages Spark&apos;s instant transaction capabilities and low fees to provide innovative insurance solutions for Bitcoin holders and businesses while maintaining self-custody principles.
           </p>
           <p className="text-lg md:text-xl text-gray-600 mb-16 max-w-3xl mx-auto leading-relaxed font-medium">
-            With NEAR Intents integration, SparkShield enables cross-chain insurance products, AI-powered claim resolution, and unified liquidity across multiple blockchains.
+            With Runes DEX integration powered by NEAR Intents, SparkShield enables seamless token swaps, cross-chain insurance products, and unified liquidity across multiple blockchains.
           </p>
           
-          <Link href="/intents" className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition-colors shadow-md">
-            Explore NEAR Intents Dashboard
-          </Link>
+          <div className="flex flex-wrap justify-center gap-4">
+            <Link href="/intents" className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition-colors shadow-md">
+              Explore NEAR Intents Dashboard
+            </Link>
+            <Link href="/runes-dex" className="inline-block bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-6 rounded-lg transition-colors shadow-md">
+              Try Runes DEX
+            </Link>
+          </div>
         </div>
 
         {/* User Type Selection */}
@@ -117,33 +122,33 @@ export default function Home() {
           />
         </div>
         
-        {/* NEAR Intents Highlight Section */}
-        <div className="mt-24 bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-8 shadow-md border border-blue-200">
-          <h2 className="text-3xl font-bold text-center mb-8 text-blue-800">Why We Use NEAR Intents</h2>
+        {/* Runes DEX Integration Highlight Section */}
+        <div className="mt-24 bg-gradient-to-br from-purple-50 to-blue-100 rounded-xl p-8 shadow-md border border-purple-200">
+          <h2 className="text-3xl font-bold text-center mb-8 text-purple-800">Runes DEX Integration with NEAR Intents</h2>
           <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-white p-6 rounded-lg shadow-sm border border-blue-100 hover:shadow-md transition-shadow">
-              <h3 className="text-xl font-semibold mb-3 text-blue-700">Cross-Chain Capabilities</h3>
+            <div className="bg-white p-6 rounded-lg shadow-sm border border-purple-100 hover:shadow-md transition-shadow">
+              <h3 className="text-xl font-semibold mb-3 text-purple-700">Seamless Token Swaps</h3>
               <p className="text-gray-700">
-                NEAR Intents enables seamless asset transfers between Bitcoin, NEAR, and other chains, 
-                providing a unified interface for multi-chain insurance products and expanding our market reach.
+                Runes DEX enables automatic token conversion when you don&apos;t have the exact token needed for insurance operations,
+                with optimal routing and fair rates powered by NEAR Intents.
               </p>
             </div>
-            <div className="bg-white p-6 rounded-lg shadow-sm border border-blue-100 hover:shadow-md transition-shadow">
-              <h3 className="text-xl font-semibold mb-3 text-blue-700">AI-Powered Claim Resolution</h3>
+            <div className="bg-white p-6 rounded-lg shadow-sm border border-purple-100 hover:shadow-md transition-shadow">
+              <h3 className="text-xl font-semibold mb-3 text-purple-700">Cross-Chain Capabilities</h3>
               <p className="text-gray-700">
-                Leverage intelligent claim verification using AI agents, enabling automated intent resolution 
-                for faster payouts and enhanced fraud detection through sophisticated analysis.
+                Swap tokens seamlessly between Bitcoin, NEAR, and other chains with atomic settlement,
+                providing a unified interface for multi-chain insurance products.
               </p>
             </div>
-            <div className="bg-white p-6 rounded-lg shadow-sm border border-blue-100 hover:shadow-md transition-shadow">
-              <h3 className="text-xl font-semibold mb-3 text-blue-700">Enhanced User Experience</h3>
+            <div className="bg-white p-6 rounded-lg shadow-sm border border-purple-100 hover:shadow-md transition-shadow">
+              <h3 className="text-xl font-semibold mb-3 text-purple-700">Enhanced User Experience</h3>
               <p className="text-gray-700">
                 Enjoy cross-chain settlement in seconds regardless of native asset chain, with simplified 
                 user flows through intent-based interactions and reduced complexity.
               </p>
             </div>
-            <div className="bg-white p-6 rounded-lg shadow-sm border border-blue-100 hover:shadow-md transition-shadow">
-              <h3 className="text-xl font-semibold mb-3 text-blue-700">Expanded Market Access</h3>
+            <div className="bg-white p-6 rounded-lg shadow-sm border border-purple-100 hover:shadow-md transition-shadow">
+              <h3 className="text-xl font-semibold mb-3 text-purple-700">Expanded Market Access</h3>
               <p className="text-gray-700">
                 Access combined liquidity from DEXs across chains and CEXs, with broader capital pools 
                 for insurance backing and increased participation from diverse ecosystems.
@@ -151,11 +156,13 @@ export default function Home() {
             </div>
           </div>
           <div className="text-center mt-8">
-            <Link href="/intents" className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition-colors shadow-md">
-              Try NEAR Intents Now
+            <Link href="/runes-dex" className="inline-block bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-6 rounded-lg transition-colors shadow-md">
+              Try Runes DEX Now
             </Link>
           </div>
         </div>
+
+       
       </div>
     </div>
   );

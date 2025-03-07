@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useIntents, IntentParameters } from './IntentProvider';
+import Link from 'next/link';
 
 interface IntentCreatorProps {
   type: 'coverage' | 'claim' | 'staking';
@@ -186,6 +187,30 @@ const IntentCreator: React.FC<IntentCreatorProps> = ({
         </div>
         
         {getParameterFields()}
+        
+        {formData.targetChain !== 'BTC' && (
+          <div className="mb-4 p-3 bg-blue-50 rounded-md border border-blue-200">
+            <div className="flex items-start">
+              <svg className="h-5 w-5 text-blue-500 mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <div>
+                <p className="text-sm text-blue-700 mb-2">
+                  Don&apos;t have enough BTC? Use our Runes DEX to swap your tokens.
+                </p>
+                <Link 
+                  href="/runes-dex" 
+                  className="text-sm bg-blue-600 text-white py-1 px-3 rounded hover:bg-blue-700 inline-flex items-center"
+                >
+                  Swap Tokens
+                  <svg className="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
+                </Link>
+              </div>
+            </div>
+          </div>
+        )}
         
         <button 
           type="submit" 

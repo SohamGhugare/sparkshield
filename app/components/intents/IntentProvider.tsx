@@ -15,13 +15,15 @@ export interface IntentParameters {
 
 export interface Intent {
   id: string;
-  type: 'coverage' | 'claim' | 'staking';
+  type: 'coverage' | 'claim' | 'staking' | 'swap' | 'quote';
   parameters: IntentParameters;
   sourceChain: string;
   targetChain: string;
   status: 'pending' | 'resolved' | 'failed';
   solver?: string;
   createdAt: number;
+  reason?: string;
+  payout?: number;
 }
 
 export interface IntentResolution {
