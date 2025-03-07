@@ -18,7 +18,7 @@ export default function Home() {
               <span>Powered by</span>
               <div className="flex flex-wrap items-center justify-center gap-3">
                 <span className="text-orange-600 inline-block hover:scale-105 transition-transform bg-orange-50 px-4 py-2 rounded-lg shadow-sm">
-                  Spark
+                  NEAR Intents
                 </span>
                 <span className="text-gray-700">&</span>
                 <span className="text-purple-600 inline-block hover:scale-105 transition-transform bg-purple-50 px-4 py-2 rounded-lg shadow-sm">
@@ -27,9 +27,6 @@ export default function Home() {
               </div>
             </div>
           </h1>
-          <p className="text-lg md:text-xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed font-medium">
-            SparkShield is a Bitcoin-native parametric insurance protocol built directly on Spark. It leverages Spark&apos;s instant transaction capabilities and low fees to provide innovative insurance solutions for Bitcoin holders and businesses while maintaining self-custody principles.
-          </p>
           <p className="text-lg md:text-xl text-gray-600 mb-16 max-w-3xl mx-auto leading-relaxed font-medium">
             With Runes DEX integration powered by NEAR Intents, SparkShield enables seamless token swaps, cross-chain insurance products, and unified liquidity across multiple blockchains.
           </p>
